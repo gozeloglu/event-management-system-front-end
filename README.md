@@ -1,3 +1,20 @@
+# Event Management System
+This is my first **React** project that I implemented during the 2020 Summer Internship.
+
+To run this project, type the commands on command line:
+
+`$ cd event-management-system`
+
+`$ yarn start`
+
+My package dependicies as follow:
+
+`npm`: 6.14.5
+
+`node`: v12.18.2
+
+`yarn`: 1.22.4
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
