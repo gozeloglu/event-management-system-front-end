@@ -7,7 +7,7 @@ To run this project, type the commands on command line:
 
 `$ yarn start`
 
-My package dependicies as follow:
+My package versions as follow:
 
 `npm`: 6.14.5
 
