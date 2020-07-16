@@ -1,22 +1,31 @@
 import React, {Component} from "react";
-import Card from "react-bootstrap/Card";
+import Events from "./Events";
 
 class Event extends Component {
+
     render() {
+        const {events} = this.props
         return (
-            <div className={"col-md-8 mb-4"}>
-                <div className={"card"}>
-                    <div className={"card-header d-flex justify-context-between"}>
-                        <h4 className={"d-inline"}>Event Name</h4>
-                    </div>
-                    <div className={"card-body"}>
-                        <p className={"card-text"}>Start Date</p>
-                        <p className={"card-text"}>End Date</p>
-                    </div>
-                </div>
-                <hr/>
+            <div>
+                {
+                    events.map(event => {
+                        return (
+                            <Events
+                                key={event.id}
+                                eventName={event.eventName}
+                                address={event.address}
+                                eventDetails={event.eventDetails}
+                                registrationDeadline={event.registrationDeadline}
+                                startDate = {event.startDate}
+                                endDate = {event.endDate}
+                                startTime={event.startTime}
+                                endTime={event.endTime}
+                            />
+                        )
+                    })
+                }
             </div>
-        );
+        )
     }
 }
 
