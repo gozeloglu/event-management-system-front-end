@@ -4,6 +4,7 @@ import Title from "./Components/Title";
 import Button from "@material-ui/core/Button";
 import PlusIcon from '@material-ui/icons/Add';
 import MaterialTableDemo from "./Components/MeetupList";
+import SnackbarComponent from "./Components/Snackbar";
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
                     >
                         Add New Meetup</Button>
                 </div>
+                <SnackbarComponent variant={"error"} message={"Error Message"}/>
                 <MaterialTableDemo/>
 
             </div>

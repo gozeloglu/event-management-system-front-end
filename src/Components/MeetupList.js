@@ -1,33 +1,36 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import tableIcons from './TableIcons';
+import Snackbar from "@material-ui/core";
 
 export default function MaterialTableDemo() {
     const [state, setState] = React.useState({
         columns: [
-            {title: 'Name', field: 'name'},
-            {title: 'Surname', field: 'surname'},
-            {title: 'Birth Year', field: 'birthYear', type: 'numeric'},
-            {
+            {title: 'Meetup Name', field: 'name'},
+            {title: 'Details', field: 'details'},
+            {title: 'Start Date', field: 'startDate', type: 'date'},    // TODO date --> numeric
+            {title: 'End Date', field: 'endDate', type: 'date'},
+            {title: 'Capacity', field: 'quota', type: 'numeric'},
+            /*{
                 title: 'Birth Place',
                 field: 'birthCity',
                 lookup: {34: 'İstanbul', 63: 'Şanlıurfa'},
-            },
+            },*/
         ],
         data: [
-            {name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63},
+            {name: 'Mehmet', details: 'Baran', startDate: 1987, endDate: 63},
             {
                 name: 'Zerya Betül',
-                surname: 'Baran',
-                birthYear: 2017,
-                birthCity: 34,
+                details: 'Baran',
+                startDate: 2017,
+                endDate: 34,
             },
         ],
     });
 
     return (
         <MaterialTable
-            title="Editable Example"
+            title="Meetups"
             columns={state.columns}
             data={state.data}
             icons={{
