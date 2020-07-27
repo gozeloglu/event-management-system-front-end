@@ -12,7 +12,6 @@ export default function TableContent(props) {
     let iconMap = {
         "update": <CreateIcon/>,
         "delete": <DeleteIcon/>,
-        "addBook": <AddIcon/>
     }
 
     return (
@@ -45,7 +44,7 @@ export default function TableContent(props) {
 
     function createTableCell(column, row) {
         let cellValue = row[column.id];
-        if (column.id === "update" || column.id === "delete" || column.id === "addBook") {
+        if (column.id === "update" || column.id === "delete") {
             cellValue = createIcon(column.id, column.onClick, row.meetupID);
         }
 

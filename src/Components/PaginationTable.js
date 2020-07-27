@@ -26,9 +26,8 @@ export default class PaginationTable extends Component {
         {id: "endDate", label: "End Date", minWidth: 100},
         {id: "quota", label: "Quota", minWidth: 100},
         {id: "registeredUserCount", label: "Registered User", minWidth: 100},
-        {id: "update", label: "Update Meetup", minWidth: 100},
-        {id: "delete", label: "Delete Meetup", minWidth: 100},
-        {id: "addMeetup", label: "Add New Meetup", minWidth: 100},
+        {id: "update", label: "Update Meetup", minWidth: 100, onClick: this.props.onUpdate},
+        {id: "delete", label: "Delete Meetup", minWidth: 100, onClick: this.props.onDelete},
     ];
 
     handleChangePage = (event, newPage) => {
@@ -49,7 +48,7 @@ export default class PaginationTable extends Component {
                   <Table stickyHeader aria-label={"sticky table"}>
                       <TableHeader columns={this.columns}/>
                       <TableContent rows={this.props.rows} page={this.state.page} rowsPerPage={this.state.rowsPerPage}
-                                    columns={this.columns} onAddBook={this.props.onAddBook}/>
+                                    columns={this.columns}/>
                   </Table>
               </TableContainer>
               <TablePageController count={this.state.rows.length}
