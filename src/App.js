@@ -36,21 +36,22 @@ class App extends Component {
     }
 
     componentDidMount() {
+        console.log("COMPONENT DID MOUNT!\n")
         axios.get("/meetups")
             .then(response => {
                 console.log("HERE")
                 console.log(response.data)
-                this.setState({data: response.data})
+                this.setState({rows: response.data})
             })
     }
 
-    toggleAddMeetuptModal = () => {
+    toggleAddMeetupModal = () => {
         this.setState({addMeetupModalOpen: !this.state.addMeetupModalOpen})
     }
 
 
     submitMeetupAdd = (newMeetupData) => {
-        this.toggleAddMeetuptModal()
+        this.toggleAddMeetupModal()
         axios.post("/meetups/create-new-meetup", newMeetupData)
             .then(response => {
                 this.setState(prevState => (
@@ -163,7 +164,7 @@ class App extends Component {
                             color={"primary"}
                             style={{float: "right"}}
                             onClick={() => {
-                                this.toggleAddMeetuptModal()
+                                this.toggleAddMeetupModal()
                             }}
                             startIcon={<PlusIcon/>}
                     >
@@ -177,14 +178,13 @@ class App extends Component {
                     </Alert>
                 </Snackbar>
                 <ReactDialog fields={this.meetupDialogFields} title="Add New Meetup"
-                             isOpen={this.state.addMeetupModalOpen} onClose={this.toggleAddMeetuptModal}
+                             isOpen={this.state.addMeetupModalOpen} onClose={this.toggleAddMeetupModal}
                              onSubmit={this.submitMeetupAdd}/>
                 <PaginationTable rows={this.state.rows} onUpdate={this.onUpdateMeetup} onDelete={this.onDeleteMeetup}
                                  submitMeetupAdd={this.submitMeetupAdd}/>
             </div>
         );
     }
-
 }
 
 export default App;
