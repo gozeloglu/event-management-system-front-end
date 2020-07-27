@@ -26,7 +26,7 @@ export default class PaginationTable extends Component {
         {id: "endDate", label: "End Date", minWidth: 100},
         {id: "quota", label: "Quota", minWidth: 100},
         {id: "registeredUserCount", label: "Registered User", minWidth: 100},
-        {id: "update", label: "Update Meetup", minWidth: 100, onClick: this.props.onUpdate},
+        {id: "update", label: "Update Meetup", minWidth: 100, onClick: this.props.toggleAddMeetupModal},
         {id: "delete", label: "Delete Meetup", minWidth: 100, onClick: this.props.onDelete},
     ];
 
@@ -43,19 +43,19 @@ export default class PaginationTable extends Component {
 
     render() {
         return (
-          <Paper>
-              <TableContainer>
-                  <Table stickyHeader aria-label={"sticky table"}>
-                      <TableHeader columns={this.columns}/>
-                      <TableContent rows={this.props.rows} page={this.state.page} rowsPerPage={this.state.rowsPerPage}
-                                    columns={this.columns}/>
-                  </Table>
-              </TableContainer>
-              <TablePageController count={this.state.rows.length}
-                                   rowsPerPage={this.state.rowsPerPage}
-                                   page={this.state.page} handleChangePage={this.handleChangePage}
-                                   handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
-          </Paper>
+            <Paper>
+                <TableContainer>
+                    <Table stickyHeader aria-label={"sticky table"}>
+                        <TableHeader columns={this.columns}/>
+                        <TableContent rows={this.props.rows} page={this.state.page} rowsPerPage={this.state.rowsPerPage}
+                                      columns={this.columns}/>
+                    </Table>
+                </TableContainer>
+                <TablePageController count={this.state.rows.length}
+                                     rowsPerPage={this.state.rowsPerPage}
+                                     page={this.state.page} handleChangePage={this.handleChangePage}
+                                     handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
+            </Paper>
         );
     }
 }

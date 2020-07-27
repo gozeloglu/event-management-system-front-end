@@ -27,6 +27,7 @@ class App extends Component {
         this.state = {
             rows: [],
             addMeetupModalOpen: false,
+            updateMeetupModalOpen: false,
             snackbarProperties: {
                 isOpen: false,
                 message: "",
@@ -49,6 +50,9 @@ class App extends Component {
         this.setState({addMeetupModalOpen: !this.state.addMeetupModalOpen})
     }
 
+    toggleUpdateMeetupModal = () => {
+        this.setState({updateMeetupModalOpen: !this.state.updateMeetupModalOpen})
+    }
 
     submitMeetupAdd = (newMeetupData) => {
         this.toggleAddMeetupModal()
@@ -143,7 +147,12 @@ class App extends Component {
                 <ReactDialog fields={this.meetupDialogFields} title="Add New Meetup"
                              isOpen={this.state.addMeetupModalOpen} onClose={this.toggleAddMeetupModal}
                              onSubmit={this.submitMeetupAdd}/>
-                <PaginationTable rows={this.state.rows} onUpdate={this.onUpdateMeetup} onDelete={this.onDeleteMeetup}
+
+                <ReactDialog fields={this.meetupDialogFields} title="Update Meetup"
+                             isOpen={this.state.updateMeetupModalOpen} onClose={this.toggleUpdateMeetupModal}
+                             onSubmit={this.submitMeetupAdd}/>
+
+                <PaginationTable rows={this.state.rows} onClick={this.toggleAddMeetupModal} onUpdate={this.onUpdateMeetup} onDelete={this.onDeleteMeetup}
                                  submitMeetupAdd={this.submitMeetupAdd}/>
             </div>
         );

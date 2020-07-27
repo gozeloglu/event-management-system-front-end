@@ -11,7 +11,7 @@ export default function TableContent(props) {
 
     let iconMap = {
         "update": <CreateIcon/>,
-        "delete": <DeleteIcon/>,
+        "delete": <DeleteIcon style={{color: "red"}}/>,
     }
 
     return (

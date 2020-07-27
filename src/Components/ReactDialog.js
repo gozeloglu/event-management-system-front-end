@@ -10,7 +10,7 @@ class ReactDialog extends Component {
 
 
     state = {
-        inputData: {...this.props.data}
+        inputData: {...this.props.rows}
     }
 
 
@@ -40,7 +40,7 @@ class ReactDialog extends Component {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.props.onClose} color="primary">
+                    <Button onClick={this.props.onClose} color="secondary">
                         Cancel
                     </Button>
                     <Button onClick={() => {this.props.onSubmit(this.state.inputData)}} color="primary">
