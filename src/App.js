@@ -56,7 +56,7 @@ class App extends Component {
             .then(response => {
                 this.setState(prevState => (
                     {
-                        data: [...prevState.data, response.data]
+                        rows: [...prevState.rows, response.data]
                     }
                 ));
                 this.snackbarOpen("Meetup has been added successfully!", "success")
@@ -64,6 +64,8 @@ class App extends Component {
             .catch(error => {
                 if (error.response.status === 400) {
                     this.snackbarOpen(error.response.data.errors[0].defaultMessage, "error")
+                } else if (error.response.status === 500) {
+                    this.snackbarOpen("You cannot add an existing meetup!", "error")
                 }
                 console.log(error.response)
             })
@@ -100,42 +102,9 @@ class App extends Component {
             })
     }
 
-    /**onAddMeetup(newMeetup) {
-        axios.post("/meetups/create-new-meetup", {
-            "meetupID": "12346",
-            "meetupName": "Python Day Turkey",
-            "details": "Heyyo! We are back! We are going to do a meetup on the next week!",
-            "address": "METU, METU Campus, CS Building Ankara",
-            "placeName": "CENG Building",
-            "startDate": "2020-10-11",
-            "endDate": "2020-10-11",
-            "quota": 100,
-            "registeredUserCount": 0
-        })
-            .then(response => {
-                console.log(response.data)
-                console.log("Meetup is added successfully!")
-//                this.setState({data: response.data})
-            })
-            .catch(response => {
-                if (response.status === 500) {
-                    console.log("Some problems!")
-                }
-            })
-    }**/
 
     onUpdateMeetup = (data) => {
-        axios.put("/meetups/update-meetup/" + 12346, {
-            "meetupID": "12346",
-            "meetupName": "Ruby Day Turkey",
-            "details": "Heyyo! We are back! We are going to do a meetup on the next week!",
-            "address": "METU, METU Campus, CS Building Ankara",
-            "placeName": "CENG Building",
-            "startDate": "2020-10-11",
-            "endDate": "2020-10-11",
-            "quota": 100,
-            "registeredUserCount": 0
-        })
+        axios.put("/meetups/update-meetup/" + 12346, data)
             .then(response => {
                 console.log(response.data)
                 console.log("Updated successfully!")
