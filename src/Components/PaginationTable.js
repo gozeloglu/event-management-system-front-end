@@ -26,9 +26,12 @@ export default class PaginationTable extends Component {
         {id: "endDate", label: "End Date", minWidth: 100},
         {id: "quota", label: "Quota", minWidth: 100},
         {id: "registeredUserCount", label: "Registered User", minWidth: 100},
+        {id: "update", label: "Update Meetup", minWidth: 100},
+        {id: "delete", label: "Delete Meetup", minWidth: 100},
+        {id: "addMeetup", label: "Add New Meetup", minWidth: 100},
     ];
 
-    handelChangePage = (event, newPage) => {
+    handleChangePage = (event, newPage) => {
         this.setState({page: newPage});
     }
 
@@ -51,7 +54,7 @@ export default class PaginationTable extends Component {
               </TableContainer>
               <TablePageController count={this.state.rows.length}
                                    rowsPerPage={this.state.rowsPerPage}
-                                   page={this.state.page} handleChangePage={this.handelChangePage}
+                                   page={this.state.page} handleChangePage={this.handleChangePage}
                                    handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
           </Paper>
         );

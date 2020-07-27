@@ -38,6 +38,7 @@ class App extends Component {
     componentDidMount() {
         axios.get("/meetups")
             .then(response => {
+                console.log("HERE")
                 console.log(response.data)
                 this.setState({data: response.data})
             })
@@ -162,6 +163,7 @@ class App extends Component {
                             color={"primary"}
                             style={{float: "right"}}
                             onClick={() => {
+                                this.toggleAddMeetuptModal()
                             }}
                             startIcon={<PlusIcon/>}
                     >
@@ -174,7 +176,7 @@ class App extends Component {
                         {this.state.snackbarProperties.message}
                     </Alert>
                 </Snackbar>
-                <ReactDialog fields={this.meetupDialogFields} title="Add Student"
+                <ReactDialog fields={this.meetupDialogFields} title="Add New Meetup"
                              isOpen={this.state.addMeetupModalOpen} onClose={this.toggleAddMeetuptModal}
                              onSubmit={this.submitMeetupAdd}/>
                 <PaginationTable rows={this.state.rows} onUpdate={this.onUpdateMeetup} onDelete={this.onDeleteMeetup}
