@@ -94,15 +94,9 @@ class App extends Component {
         axios.delete("/meetups/delete-meetup/" + meetupID)
             .then(response => {
                 this.setState({
-                    data: this.state.data.filter((meetup) => meetup.meetupID !== meetupID)
+                    rows: this.state.rows.filter((meetup) => meetup.meetupID !== meetupID)
                 })
                 this.snackbarOpen("Meetup number with " + meetupID + " has been deleted successfully!", "success")
-            })
-            .catch(error => {
-                if (error.response.status === 400) {
-                    this.snackbarOpen(error.response.data.errors[0].defaultMessage, "error")
-                }
-                console.log(error.response)
             })
     }
 
