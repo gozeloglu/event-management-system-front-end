@@ -7,6 +7,7 @@ import Alert from "@material-ui/lab/Alert";
 import ReactDialog from "./Components/ReactDialog";
 import Title from "./Components/Title";
 import axios from 'axios';
+import index from "material-table";
 
 class App extends Component {
 
@@ -137,7 +138,7 @@ class App extends Component {
                     >
                         Add New Meetup</Button>
                 </div>
-                <Snackbar open={this.state.snackbarProperties.isOpen} autoHideDuration={3000}
+                <Snackbar open={this.state.snackbarProperties.isOpen} autoHideDuration={4000}
                           onClose={this.snackbarClose}
                           anchorOrigin={{vertical: 'top', horizontal: 'right'}}>
                     <Alert onClose={this.snackbarClose} severity={this.state.snackbarProperties.severity}>
@@ -147,13 +148,12 @@ class App extends Component {
                 <ReactDialog fields={this.meetupDialogFields} title="Add New Meetup"
                              isOpen={this.state.addMeetupModalOpen} onClose={this.toggleAddMeetupModal}
                              onSubmit={this.submitMeetupAdd}/>
-
+                <PaginationTable rows={this.state.rows} onClick={this.toggleAddMeetupModal}
+                                 onUpdate={this.toggleUpdateMeetupModal} onDelete={this.onDeleteMeetup}
+                                 submitMeetupAdd={this.submitMeetupAdd}/>
                 <ReactDialog fields={this.meetupDialogFields} title="Update Meetup"
                              isOpen={this.state.updateMeetupModalOpen} onClose={this.toggleUpdateMeetupModal}
-                             onSubmit={this.submitMeetupAdd}/>
-
-                <PaginationTable rows={this.state.rows} onClick={this.toggleAddMeetupModal} onUpdate={this.onUpdateMeetup} onDelete={this.onDeleteMeetup}
-                                 submitMeetupAdd={this.submitMeetupAdd}/>
+                             onSubmit={this.onUpdateMeetup} inputData={this.state.rows[index]}/>
             </div>
         );
     }

@@ -25,7 +25,7 @@ export default function TableContent(props) {
             .rows
             .slice(calculatePageBeginning(), calculatePageEnd());
     }
-    
+
     function calculatePageBeginning() {
         return props.page * props.rowsPerPage;
     }
@@ -56,7 +56,8 @@ export default function TableContent(props) {
 
         function createIcon(key, onClick, meetupID) {
             return (
-                <IconButton aria-label={key} color={"primary"} onClick={() => onClick(meetupID)}>
+                <IconButton aria-label={key} color={"primary"}
+                            onClick={() => onClick(meetupID)}>
                     {iconMap[key]}
                 </IconButton>
             )

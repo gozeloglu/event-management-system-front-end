@@ -5,6 +5,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHeader from "./TableHeader";
 import TableContent from "./TableContent";
 import {TablePageController} from "./TablePageController";
+import SureModal from "./SureModal";
 
 export default class PaginationTable extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class PaginationTable extends Component {
         {id: "endDate", label: "End Date", minWidth: 100},
         {id: "quota", label: "Quota", minWidth: 100},
         {id: "registeredUserCount", label: "Registered User", minWidth: 100},
-        {id: "update", label: "Update Meetup", minWidth: 100, onClick: this.props.toggleAddMeetupModal},
+        {id: "update", label: "Update Meetup", minWidth: 100, onClick: this.props.onUpdate},
         {id: "delete", label: "Delete Meetup", minWidth: 100, onClick: this.props.onDelete},
     ];
 
