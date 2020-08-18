@@ -5,7 +5,6 @@ import TableCell from "@material-ui/core/TableCell";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import AddIcon from "@material-ui/icons/Add";
 
 export default function TableContent(props) {
 
@@ -45,7 +44,7 @@ export default function TableContent(props) {
     function createTableCell(column, row) {
         let cellValue = row[column.id];
         if (column.id === "update" || column.id === "delete") {
-            cellValue = createIcon(column.id, column.onClick, row.meetupID);
+            cellValue = createIcon(column.id, column.onClick, row.id);
         }
 
         return (

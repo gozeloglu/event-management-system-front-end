@@ -7,7 +7,7 @@ import Alert from "@material-ui/lab/Alert";
 import ReactDialog from "./Components/ReactDialog";
 import Title from "./Components/Title";
 import axios from 'axios';
-import index from "material-table";
+import {map} from "react-bootstrap/ElementChildren";
 
 class App extends Component {
 
@@ -97,19 +97,19 @@ class App extends Component {
         })
     }
 
-    onDeleteMeetup = (meetupID) => {
-        axios.delete("/meetups/delete-meetup/" + meetupID)
+    onDeleteMeetup = (id) => {
+        axios.delete("/meetups/delete-meetup/" + id.toString())
             .then(response => {
                 this.setState({
-                    rows: this.state.rows.filter((meetup) => meetup.meetupID !== meetupID)
+                    rows: this.state.rows.filter((meetup) => meetup.id !== id)
                 })
-                this.snackbarOpen("Meetup number with " + meetupID + " has been deleted successfully!", "success")
+                this.snackbarOpen("Meetup number with " + id.toString() + " has been deleted successfully!", "success")
             })
     }
 
 
-    onUpdateMeetup = (data) => {
-        axios.put("/meetups/update-meetup/" + 12346, data)
+    onUpdateMeetup = (prevMeetupID, data) => {
+        axios.put("/meetups/update-meetup/" + prevMeetupID, data)
             .then(response => {
                 console.log(response.data)
                 console.log("Updated successfully!")
@@ -147,13 +147,14 @@ class App extends Component {
                 </Snackbar>
                 <ReactDialog fields={this.meetupDialogFields} title="Add New Meetup"
                              isOpen={this.state.addMeetupModalOpen} onClose={this.toggleAddMeetupModal}
-                             onSubmit={this.submitMeetupAdd}/>
+                             onSubmit={this.submitMeetupAdd} isUpdate={false}/>
                 <PaginationTable rows={this.state.rows} onClick={this.toggleAddMeetupModal}
                                  onUpdate={this.toggleUpdateMeetupModal} onDelete={this.onDeleteMeetup}
                                  submitMeetupAdd={this.submitMeetupAdd}/>
                 <ReactDialog fields={this.meetupDialogFields} title="Update Meetup"
                              isOpen={this.state.updateMeetupModalOpen} onClose={this.toggleUpdateMeetupModal}
-                             onSubmit={this.onUpdateMeetup} inputData={this.state.rows[index]}/>
+                             onSubmit={this.onUpdateMeetup} inputData={this.state.rows[0]} isUpdate={true}
+                />
             </div>
         );
     }

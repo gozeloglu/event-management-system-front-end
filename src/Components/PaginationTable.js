@@ -18,7 +18,7 @@ export default class PaginationTable extends Component {
     }
 
     columns = [
-        {id: "meetupID", label: "Meetup ID", minWidth: 100},
+       //  {id: "meetupID", label: "Meetup ID", minWidth: 100},
         {id: "meetupName", label: "Meetup Name", minWidth: 100},
         {id: "details", label: "Details", minWidth: 100},
         {id: "address", label: "Address", minWidth: 100},

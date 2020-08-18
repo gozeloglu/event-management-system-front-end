@@ -8,10 +8,17 @@ import Button from "@material-ui/core/Button";
 
 class ReactDialog extends Component {
 
-
-    state = {
-        inputData: {...this.props.rows}
+    constructor(props) {
+        super(props);
+        this.state={
+            inputData: {...this.props.rows},
+            prevMeetupID: "",
+        }
     }
+    /**state = {
+        inputData: {...this.props.rows},
+        prevMeetupID: "",
+    }**/
 
 
     handleInputChange = (event) => {
@@ -25,8 +32,16 @@ class ReactDialog extends Component {
         })
     }
 
+    componentDidMount() {
+        this.setState({prevMeetupID: this.state.inputData["meetupID"]})
+    }
 
     render() {
+        console.log(this.props.inputData)
+//        let prevMeetupID = this.props.inputData["meetupID"];
+        console.log("--------------------", this.props.isUpdate)
+  //      console.log(prevMeetupID)
+
         return (
             <Dialog open={this.props.isOpen} onClose={this.props.onClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">{this.props.title}</DialogTitle>
@@ -43,7 +58,14 @@ class ReactDialog extends Component {
                     <Button onClick={this.props.onClose} color="secondary">
                         Cancel
                     </Button>
-                    <Button onClick={() => {this.props.onSubmit(this.state.inputData)}} color="primary">
+                    <Button onClick={() => {
+                        if (this.props.isUpdate) {
+                            this.props.onSubmit(this.state.inputData)
+                        } else {
+                            this.props.onSubmit(this.state.inputData)
+                        }
+
+                    }} color="primary">
                         Submit
                     </Button>
                 </DialogActions>
