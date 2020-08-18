@@ -12,7 +12,6 @@ import {map} from "react-bootstrap/ElementChildren";
 class App extends Component {
 
     meetupDialogFields = [
-        {id: "meetupID", label: "Meetup ID", type: "text"},
         {id: "meetupName", label: "Meetup Name", type: "text"},
         {id: "details", label: "Details", type: "text"},
         {id: "address", label: "Address", type: "text"},
@@ -20,7 +19,6 @@ class App extends Component {
         {id: "startDate", label: "Start Date", type: "date"},
         {id: "endDate", label: "End Date", type: "date"},
         {id: "quota", label: "Quota", type: "numeric"},
-        {id: "registeredUserCount", label: "Registered User Count", type: "numeric"},
     ]
 
     constructor(props) {

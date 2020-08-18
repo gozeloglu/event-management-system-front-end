@@ -15,10 +15,6 @@ class ReactDialog extends Component {
             prevMeetupID: "",
         }
     }
-    /**state = {
-        inputData: {...this.props.rows},
-        prevMeetupID: "",
-    }**/
 
 
     handleInputChange = (event) => {
@@ -33,14 +29,12 @@ class ReactDialog extends Component {
     }
 
     componentDidMount() {
-        this.setState({prevMeetupID: this.state.inputData["meetupID"]})
+        this.setState({prevMeetupID: this.state.inputData["id"]})
     }
 
     render() {
         console.log(this.props.inputData)
-//        let prevMeetupID = this.props.inputData["meetupID"];
         console.log("--------------------", this.props.isUpdate)
-  //      console.log(prevMeetupID)
 
         return (
             <Dialog open={this.props.isOpen} onClose={this.props.onClose} aria-labelledby="form-dialog-title">
